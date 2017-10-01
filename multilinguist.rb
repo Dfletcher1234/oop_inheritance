@@ -8,12 +8,10 @@ class Multilinguist
 
   TRANSLTR_BASE_URL = "http://bitmakertranslate.herokuapp.com"
   COUNTRIES_BASE_URL = "https://restcountries.eu/rest/v2/name"
-  #{name}?fullText=true
-  #?text=The%20total%20is%2020485&to=ja&from=en
 
 
-  # Initializes the multilinguist's @current_lang to 'en'
-  #
+
+
   # @return [Multilinguist] A new instance of Multilinguist
   def initialize
     @current_lang = 'en'
@@ -31,9 +29,7 @@ class Multilinguist
     json_response.first['languages'].first['iso639_1']
   end
 
-  # Sets @current_lang to one of the languages spoken
-  # in a given country
-  #
+
   # @param country_name [String] The full name of a country
   # @return [String] The new value of @current_lang as a 2 letter iso639_1 code
   def travel_to(country_name)
@@ -52,3 +48,8 @@ class Multilinguist
     json_response['translationText']
   end
 end
+
+guy = Multilinguist.new
+puts guy.language_in("Ukraine")
+puts guy.travel_to("Ukraine")
+puts guy.say_in_local_language("Hello")
